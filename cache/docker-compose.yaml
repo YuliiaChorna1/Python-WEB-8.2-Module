@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  redis_server:
+    container_name: redis
+    image: redis:latest
+    environment:
+      - REDIS_PORT=6379
+    ports:
+      - 6379:6379
+
+  api_db:
+    container_name: db
+    image: mongo:4.4.19-rc0-focal
+    volumes:
+      - db-data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_ADMIN}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - 27017:27017
+
+volumes:
+  db-data:

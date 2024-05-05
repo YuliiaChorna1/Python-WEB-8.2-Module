@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  rabbit_service:
+    container_name: rabbit_mq
+    image: rabbitmq:3.12.13-management # not rc - release candidate
+    environment:
+      - RABBITMQ_DEFAULT_USER=dima
+      - RABBITMQ_DEFAULT_PASS=kushchevskyi
+    ports:
+      - 8080:5672
+      - 9090:15672
